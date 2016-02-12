@@ -1,0 +1,56 @@
+{% load i18n %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="es" class="lt-ie10 lt-ie9 lt-ie8 lt-ie7 "><![endif]-->
+<!--[if IE 7]><html lang="es" class="lt-ie10 lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="es" class="lt-ie10 lt-ie9 "> <![endif]-->
+<!--[if IE 9]><html lang="es" class="lt-ie10 "> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="es" class=""> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sitio externo del Gobierno de la Ciudad de Buenos Aires.">
+    <meta name="author" content="Gobierno de la Ciudad de Buenos Aires">
+    <title>Open BA ID</title>
+    <!--link rel="shortcut icon" href="{% static 'bootstrap3/favicon.ico' %}"-->
+    <!--link rel="apple-touch-icon-precomposed" href="{% static 'bootstrap3/favicon-mobile.png' %}"-->
+    <link rel="stylesheet" href="{% static 'bootstrap3/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/baid-styles.css' %}">
+
+    <!-- ESTILOS EXTRA -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+
+    <header class="navbar navbar-inverse navbar-top">
+        <div class="container">
+            <a class="navbar-brand bac-header text-center" href="{% url 'home' %}">Open BA ID</a>
+        </div>
+    </header>
+
+    {% block navigation %}{% endblock %}
+
+    {% block afternav %}{% endblock %}
+
+    <!-- CONTENIDO -->
+    <main class="main-container" role="main">
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+    <!-- FIN DE CONTENIDO -->
+
+    <script src="{% static 'bootstrap3/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap3/bootstrap.min.js' %}"></script>
+
+    {% block scripts %}{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+    <h1>{% trans 'Activar mi cuenta' %}</h1>
+    <p>{% trans 'Te enviaremos un email a:' %}</p>
+
+    {% if form.errors.email %}
+        <div class="alert alert-danger">{{ form.errors.email }}</div>
+    {% endif %}
+
+    <form method="post" action="{% url 'accounts:email_send' %}">
+        {% csrf_token %}
+        <div class="form-group {% if form.errors.email %}has-error{% endif %}">
+            {{ form.email }}
+        </div>
+        <div class="g-recaptcha">
+            {{ form.captcha }}
+        </div>
+        {{ form.next }}
+        <br>
+        <button class="btn btn-primary btn-xl btn-block">{% trans 'Enviar' %}</button>
+    </form>
+    
+{% endblock %}

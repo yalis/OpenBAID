@@ -1,0 +1,151 @@
+html {
+  height: 100%;
+  background: #fff; }
+
+body {
+  min-height: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  background: #f9f9f9;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2); }
+
+.container {
+  width: 100%; }
+
+.main-container {
+  padding-top: 20px; }
+  .main-container .container {
+    padding: 0 30px; }
+
+.navbar {
+  margin: 0;
+  border-radius: 0;
+}
+
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+  display: block;
+  float: none;
+  margin-left: auto;
+  margin-right: auto; }
+
+.navbar.navbar-default {
+  margin-bottom: 0;
+  border-radius: 0;
+  border-top-color: #e7e7e7;
+  border-bottom-color: #e7e7e7;
+  border-left-color: #f8f8f8;
+  border-right-color: #f8f8f8;
+}
+
+.navbar-nav.navbar-right:last-child {
+  margin-right: 0; }
+
+.navbar-nav {
+  float: left !important;
+  margin-top: 0;
+  margin-bottom: 0; }
+
+.navbar-right {
+  float: right !important; }
+
+.navbar-nav > li {
+  float: left !important; }
+
+.navbar-nav > li > a {
+  padding-top: 15px;
+  padding-bottom: 15px; }
+
+.navbar-nav > li.user-name > a {
+  max-width: 57vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+#mobileMenu .navbar-nav {
+  float: none !important; }
+  #mobileMenu .navbar-nav li {
+    float: none !important; }
+    #mobileMenu .navbar-nav li a {
+      display: block;
+      text-align: center; }
+
+.icon {
+  width: 160px;
+  height: 160px;
+  margin: 20px auto 0;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%; }
+  .icon.icon-user {
+    background-image: url("../img/icon-user.png");
+    background-image: url("../img/icon-user.svg"); }
+  .icon.icon-email {
+    background-image: url("../img/icon-email.png");
+    background-image: url("../img/icon-email.svg"); }
+  .icon.icon-warning {
+    background-image: url("../img/icon-warning.png");
+    background-image: url("../img/icon-warning.svg"); }
+  .icon.icon-danger {
+    background-image: url("../img/icon-danger.png");
+    background-image: url("../img/icon-danger.svg"); }
+
+.social-icon {
+  display: inline-block;
+  height: 18px;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  vertical-align: -2px; }
+  .social-icon.social-fb {
+    width: 8px;
+    background-image: url("../img/social-fb.png");
+    background-image: url("../img/social-fb.svg"); }
+  .social-icon.social-gp {
+    width: 18px;
+    background-image: url("../img/social-gp.png");
+    background-image: url("../img/social-gp.svg"); }
+
+.dissmisable-row {
+  margin-right: 70px; }
+
+.g-recaptcha {
+  max-width: 304px; }
+
+@media (max-width: 767px) {
+  .main-container .container {
+    padding: 0 15px; }
+
+  h1 {
+    font-size: 24px; }
+
+  h2, .h2 {
+    font-size: 22px; }
+
+  h3, .h3 {
+    font-size: 20px; }
+
+  .icon {
+    max-width: 45vw;
+    max-height: 45vw; }
+
+  .btn-xl.btn-block {
+    padding-left: 30px;
+    padding-right: 30px; } }
+
+.btn-group-xl > .btn, .btn-xl {
+  padding: 15px 64px;
+  font-size: 24px;
+  line-height: 32px;
+}
+/*# sourceMappingURL=baid-styles.css.map */
+
+
+ul.errorlist {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.vehiculos,
+.abl {
+  margin-top: 30px;
+}

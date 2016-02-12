@@ -1,0 +1,37 @@
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Open BA ID</title>
+  </head>
+  <body style="margin: 0;">
+
+    <!-- Contenido del email -->
+    <div style="padding: 10px; text-align: center; background-image: -webkit-gradient(linear, left top, left bottom, from(#ffd300), to(#ffbc00)); background-image: -webkit-linear-gradient(top, #ffd300 0%, #ffbc00 100%); background-image: linear-gradient(to bottom, #ffd300 0%, #ffbc00 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd300', endColorstr='#ffbc00',GradientType=0 ); background-color: #ffbc00; border-color: #d7a721; color: #5f4600;">
+      <img src="{{ request.build_absolute_uri }}static/img/openbaid-logo.png" alt="Open BA ID">
+    </div>
+
+    <div style="font-family: 'OpenSans', Helvetica, Arial, sans-serif;">
+      <div style="max-width: 630px; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
+        <h3 style="margin: 40px 0 30px; color: #333; font-size: 20px; line-height: 1.1; font-family: 'Gotham', Helvetica, Arial, sans-serif;">{% trans '¡Gracias por registrar tu cuenta!' %}</h3>
+        <p>{% trans 'Necesitamos confirmar tu dirección de correo electrónico para que puedas empezar a usar todos los servicios que te permite acceder tu cuenta.' %}</p>
+        <br>
+        <br>
+        <p style="text-align: center; font-size: .9em;">
+          <a href="{{ activate_url }}" style="display: inline-block; padding: 15px 25px; font-size: 18px; text-decoration: none; font-weight: bold; line-height: 1.33; border: 1px solid transparent; border-radius: 6px;background-image: -webkit-gradient(linear, left top, left bottom, from(#ffd300), to(#ffbc00)); background-image: -webkit-linear-gradient(top, #ffd300 0%, #ffbc00 100%); background-image: linear-gradient(to bottom, #ffd300 0%, #ffbc00 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd300', endColorstr='#ffbc00',GradientType=0 ); background-color: #ffbc00; border-color: #d7a721; color: #5f4600;">{% trans 'Activar mi cuenta' %}</a>
+        </p>
+        <br>
+        <br>
+        <p style="word-break: break-word; font-size: .9em;">{% trans 'Por favor entrá con el botón de arriba o ingresá a' %}
+          <a href="{{ activate_url }}">{{ activate_url }}</a>
+        </p>
+      </div>
+    </div>
+    <!-- Fin Contenido del email -->
+
+  </body>
+</html>

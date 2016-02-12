@@ -1,0 +1,602 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-04-30 17:03-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: accounts/forms.py:23
+msgid "Las contraseñas deben ser igual."
+msgstr ""
+
+#: accounts/forms.py:27
+msgid "Contraseñas deben tener mas de 4 caracteres."
+msgstr ""
+
+#: accounts/forms.py:48 accounts/templates/accounts/change_password.html:9
+msgid "Contraseña actual"
+msgstr ""
+
+#: accounts/forms.py:51 accounts/forms.py:139
+msgid "Ingresá tu nueva contraseña"
+msgstr ""
+
+#: accounts/forms.py:54
+msgid "Ingresá de nuevo tu nueva contraseña"
+msgstr ""
+
+#: accounts/forms.py:69 accounts/templates/accounts/login.html:22
+msgid "Correo Electrónico"
+msgstr ""
+
+#: accounts/forms.py:75 accounts/templates/accounts/data.html:19
+#: accounts/templates/accounts/login.html:25
+msgid "Contraseña"
+msgstr ""
+
+#: accounts/forms.py:81
+msgid "Confirmar Contraseña"
+msgstr ""
+
+#: accounts/forms.py:104 accounts/templates/accounts/data.html:14
+#: accounts/templates/accounts/data.html:15
+#: accounts/templates/accounts/email_send.html:14
+msgid "Correo electrónico"
+msgstr ""
+
+#: accounts/forms.py:115
+msgid "El email no esta asociado a ninguna cuenta existente"
+msgstr ""
+
+#: accounts/forms.py:146 accounts/templates/accounts/change_password.html:27
+#: accounts/templates/accounts/password_reset_form.html:23
+msgid "Confirmar nueva contraseña"
+msgstr ""
+
+#: accounts/templates/accounts/activation_subject.txt:1
+msgid "Activar cuenta de Buenos Aires Ciudad"
+msgstr ""
+
+#: accounts/templates/accounts/change_password.html:5
+#: accounts/templates/accounts/password_reset_form.html:8
+msgid "Cambiá tu contraseña"
+msgstr ""
+
+#: accounts/templates/accounts/change_password.html:19
+#: accounts/templates/accounts/password_reset_form.html:18
+msgid "Nueva contraseña"
+msgstr ""
+
+#: accounts/templates/accounts/change_password.html:34
+msgid "Aceptar"
+msgstr ""
+
+#: accounts/templates/accounts/change_password.html:39
+#: accounts/templates/accounts/delete_account.html:18
+msgid "Volver"
+msgstr ""
+
+#: accounts/templates/accounts/change_password.html:40
+#: accounts/templates/accounts/data.html:26
+#: accounts/templates/accounts/delete_account.html:19
+#: accounts/templates/accounts/delete_account_success.html:10
+#: accounts/templates/accounts/login.html:44
+#: accounts/templates/accounts/password_reset_form.html:33
+#: accounts/templates/accounts/password_reset_send.html:46
+#: accounts/templates/accounts/personal_data.html:73
+#: accounts/templates/accounts/profile.html:12
+#: accounts/templates/accounts/profile_extra.html:75
+#: accounts/templates/accounts/register.html:55
+msgid "Términos de uso y privacidad"
+msgstr ""
+
+#: accounts/templates/accounts/data.html:9
+msgid "Datos de Cuenta"
+msgstr ""
+
+#: accounts/templates/accounts/data.html:20
+#: accounts/templates/accounts/password_reset_form.html:29
+msgid "Cambiar contraseña"
+msgstr ""
+
+#: accounts/templates/accounts/data.html:25
+#: accounts/templates/accounts/delete_account.html:12
+msgid "Borrar cuenta"
+msgstr ""
+
+#: accounts/templates/accounts/delete_account.html:7
+msgid "¿Estás seguro que querés borrar tu cuenta de la Ciudad?"
+msgstr ""
+
+#: accounts/templates/accounts/delete_account.html:8
+msgid ""
+"Borrando tu cuenta de la Ciudad vas a perder la posibilidad de hacer tus "
+"trámites de manera online y acceder a todos los beneficios y notificaciones "
+"de servicios."
+msgstr ""
+
+#: accounts/templates/accounts/delete_account_success.html:6
+msgid "Tu cuenta fue borrada"
+msgstr ""
+
+#: accounts/templates/accounts/delete_account_success.html:8
+msgid "Volver al inicio"
+msgstr ""
+
+#: accounts/templates/accounts/email_message.html:20
+msgid "¡Gracias por registrar tu cuenta de la Ciudad de Buenos Aires!"
+msgstr ""
+
+#: accounts/templates/accounts/email_message.html:21
+msgid ""
+"Necesitamos confirmar tu dirección de correo electrónico para que puedas "
+"empezar a usar todos los servicios que te permite acceder tu cuenta de la "
+"Ciudad."
+msgstr ""
+
+#: accounts/templates/accounts/email_message.html:25
+msgid "Activar mi cuenta de la Ciudad"
+msgstr ""
+
+#: accounts/templates/accounts/email_message.html:29
+msgid "Por favor entrá con el botón de arriba o ingresá a"
+msgstr ""
+
+#: accounts/templates/accounts/email_send.html:7
+msgid "Activar mi cuenta"
+msgstr ""
+
+#: accounts/templates/accounts/email_send.html:8
+msgid "Te enviaremos un email a:"
+msgstr ""
+
+#: accounts/templates/accounts/email_send.html:15
+msgid "Enviar"
+msgstr ""
+
+#: accounts/templates/accounts/email_sent.html:9
+#: accounts/templates/accounts/password_reset_sent.html:23
+msgid "Revisá tu casilla de email"
+msgstr ""
+
+#: accounts/templates/accounts/email_sent.html:10
+msgid "Te hemos enviado un link de activación a"
+msgstr ""
+
+#: accounts/templates/accounts/email_verification.html:10
+msgid "Ocurrio un error. Intenta activar tu cuenta nuevamente."
+msgstr ""
+
+#: accounts/templates/accounts/email_verification.html:11
+msgid "Activar Cuenta"
+msgstr ""
+
+#: accounts/templates/accounts/email_verification.html:13
+msgid "Tu cuenta fue verificada!"
+msgstr ""
+
+#: accounts/templates/accounts/email_verification.html:14
+#: baid/templates/oidc_provider/authorize.html:26
+msgid "Continuar"
+msgstr ""
+
+#: accounts/templates/accounts/login.html:9
+msgid "Entrá con tu cuenta de la Ciudad"
+msgstr ""
+
+#: accounts/templates/accounts/login.html:10
+msgid ""
+"Con tu cuenta podés hacer más rápidamente tus trámites, ver el proceso de "
+"tus reclamos y facilitarte el día a día."
+msgstr ""
+
+#: accounts/templates/accounts/login.html:28
+msgid "Entrar"
+msgstr ""
+
+#: accounts/templates/accounts/login.html:31
+#: accounts/templates/accounts/register.html:48
+msgid "O entrá usando ..."
+msgstr ""
+
+#: accounts/templates/accounts/login.html:43
+#: accounts/templates/accounts/password_reset_send.html:18
+#: accounts/templates/accounts/password_reset_send.html:41
+msgid "Recuperá tu contraseña"
+msgstr ""
+
+#: accounts/templates/accounts/logout.html:7
+msgid "Sesión Finalizada!"
+msgstr ""
+
+#: accounts/templates/accounts/logout.html:8
+msgid "Gracias por utilizar nuestros servicios."
+msgstr ""
+
+#: accounts/templates/accounts/logout.html:9
+msgid "Ingresar de nuevo"
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_email.html:21
+#: accounts/templates/accounts/password_reset_invalid_code.html:14
+msgid "Recuperar mi contraseña"
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_email.html:26
+msgid "o click en:"
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_send.html:19
+msgid ""
+"Completá los datos para recibir un correo electrónico con los pasos a seguir "
+"para recuperar tu contraseña."
+msgstr ""
+
+#: accounts/templates/accounts/password_reset_sent.html:24
+msgid "Recuperá tu:"
+msgstr ""
+
+#: accounts/templates/accounts/personal_data.html:5
+#: baid/templates/base.html:48 baid/templates/base.html.py:69
+msgid "Datos personales"
+msgstr ""
+
+#: accounts/templates/accounts/personal_data.html:12
+#: accounts/templates/accounts/personal_data.html:13
+msgid "Nombres"
+msgstr ""
+
+#: accounts/templates/accounts/personal_data.html:19
+#: accounts/templates/accounts/personal_data.html:20
+msgid "Apellidos"
+msgstr ""
+
+#: accounts/templates/accounts/personal_data.html:29
+msgid "Documento"
+msgstr ""
+
+#: accounts/templates/accounts/personal_data.html:31
+msgid "DNI"
+msgstr ""
+
+#: accounts/templates/accounts/personal_data.html:32
+msgid "Libreta de enrolamiento"
+msgstr ""
+
+#: accounts/templates/accounts/personal_data.html:33
+msgid "Pasaporte"
+msgstr ""
+
+#: accounts/templates/accounts/personal_data.html:41
+#: accounts/templates/accounts/personal_data.html:42
+msgid "Número"
+msgstr ""
+
+#: accounts/templates/accounts/personal_data.html:50
+msgid "Sexo"
+msgstr ""
+
+#: accounts/templates/accounts/personal_data.html:54
+msgid "Femenino"
+msgstr ""
+
+#: accounts/templates/accounts/personal_data.html:57
+msgid "Masculino"
+msgstr ""
+
+#: accounts/templates/accounts/personal_data.html:64
+msgid "Fecha de nacimiento"
+msgstr ""
+
+#: accounts/templates/accounts/personal_data.html:65
+msgid "Día/Mes/Año"
+msgstr ""
+
+#: accounts/templates/accounts/personal_data.html:69
+msgid "Guardar datos"
+msgstr ""
+
+#: accounts/templates/accounts/profile.html:10
+msgid "Entraste a tu cuenta de la Ciudad"
+msgstr ""
+
+#: accounts/templates/accounts/profile_extra.html:5
+#: baid/templates/base.html:47 baid/templates/base.html.py:68
+msgid "Datos para trámites"
+msgstr ""
+
+#: accounts/templates/accounts/profile_extra.html:10
+msgid "Nacionalidad"
+msgstr ""
+
+#: accounts/templates/accounts/profile_extra.html:20
+msgid "Provincia"
+msgstr ""
+
+#: accounts/templates/accounts/profile_extra.html:32
+msgid "Barrio o Localidad"
+msgstr ""
+
+#: accounts/templates/accounts/profile_extra.html:39
+msgid "Departamento"
+msgstr ""
+
+#: accounts/templates/accounts/profile_extra.html:40
+msgid "Piso y depto."
+msgstr ""
+
+#: accounts/templates/accounts/profile_extra.html:48
+msgid "Domicilio"
+msgstr ""
+
+#: accounts/templates/accounts/profile_extra.html:49
+msgid "Calle y altura"
+msgstr ""
+
+#: accounts/templates/accounts/profile_extra.html:54
+#: accounts/templates/accounts/profile_extra.html:55
+msgid "Código postal"
+msgstr ""
+
+#: accounts/templates/accounts/profile_extra.html:61
+#: accounts/templates/accounts/profile_extra.html:62
+msgid "Teléfono Móvil"
+msgstr ""
+
+#: accounts/templates/accounts/profile_extra.html:66
+#: accounts/templates/accounts/profile_extra.html:67
+msgid "CUIT o CUIL"
+msgstr ""
+
+#: accounts/templates/accounts/profile_extra.html:71
+#: bienes/templates/bienes/vehiculos.html:89
+msgid "Guardar"
+msgstr ""
+
+#: accounts/templates/accounts/register.html:9
+msgid "Registrá tu cuenta de la Ciudad"
+msgstr ""
+
+#: accounts/templates/accounts/register.html:10
+msgid ""
+"Completá los datos para recibir un correo electrónico con los pasos a seguir "
+"para confirmar el registro."
+msgstr ""
+
+#: accounts/templates/accounts/register.html:44
+msgid "Registrarme"
+msgstr ""
+
+#: accounts/templates/accounts/register.html:55
+msgid "Registrandote estás aceptando los"
+msgstr ""
+
+#: accounts/templates/registration/default/delete_email.html:19
+msgid "Borrar mi cuenta de Buenos Aires Ciudad"
+msgstr ""
+
+#: accounts/templates/registration/default/delete_email.html:21
+msgid ""
+"Te enviamos este correo para confirmar si querés eliminar tu cuenta de la "
+"Ciudad. Tené en cuenta que al eliminar tu cuenta no vas a poder acceder al "
+"panel Mi BA y los datos que hayas guardado se eliminarán."
+msgstr ""
+
+#: accounts/templates/registration/default/delete_email.html:22
+msgid "Para confirmarlo por favor hacé clic en el enlace de arriba o ingresá a"
+msgstr ""
+
+#: accounts/templates/registration/default/delete_email.html:23
+msgid "¡Gracias!"
+msgstr ""
+
+#: accounts/templates/registration/default/delete_email_subject.txt:1
+msgid "Cierre de cuenta de Buenos Aires Ciudad"
+msgstr ""
+
+#: accounts/utils.py:94
+msgid "Buenos Aires Ciudad - Activar cuenta"
+msgstr ""
+
+#: accounts/utils.py:134
+msgid "Buenos Aires Ciudad - Recuper Contraseña"
+msgstr ""
+
+#: accounts/views.py:73
+msgid "El correco electrónico y contraseña son invalidos."
+msgstr ""
+
+#: accounts/views.py:76
+msgid "El usuario no existe"
+msgstr ""
+
+#: accounts/views.py:79
+msgid "Falta correo electrónico o contraseña"
+msgstr ""
+
+#: accounts/views.py:140
+msgid "El correo electrónico ya ha sido registrado. Intenta ingresar."
+msgstr ""
+
+#: accounts/views.py:199
+msgid "Tu correo electrónico esta activado. Intenta ingresar."
+msgstr ""
+
+#: accounts/views.py:213
+msgid "El correo electrónico no esta asociado a ninguna cuenta."
+msgstr ""
+
+#: accounts/views.py:278
+msgid "EL link de recuperar contraseña ya fue usado. Intentalo nuevamente."
+msgstr ""
+
+#: accounts/views.py:283
+msgid "Ocurrio un error, el link de recuperar contraseña es inválido."
+msgstr ""
+
+#: accounts/views.py:591
+msgid "Te enviamos instrucciones para completar el cierre de tu cuenta."
+msgstr ""
+
+#: accounts/views.py:616
+msgid "Tu cuenta ha sido borrada."
+msgstr ""
+
+#: accounts/views.py:620 accounts/views.py:624
+msgid "Tu cuenta no ha sido borrada. Por favor intentar nuevamente"
+msgstr ""
+
+#: baid/settings.py:111
+msgid "Español Argentina"
+msgstr ""
+
+#: baid/settings.py:112
+msgid "Inglés"
+msgstr ""
+
+#: baid/templates/base.html:49 baid/templates/base.html.py:70
+msgid "Datos de cuenta"
+msgstr ""
+
+#: baid/templates/base.html:50 baid/templates/base.html.py:71
+msgid "Mis inmuebles"
+msgstr ""
+
+#: baid/templates/base.html:51 baid/templates/base.html.py:72
+msgid "Mis vehículos"
+msgstr ""
+
+#: baid/templates/base.html:54 baid/templates/base.html.py:74
+msgid "Dashboard"
+msgstr ""
+
+#: baid/templates/base.html:62
+msgid "Salir"
+msgstr ""
+
+#: baid/templates/oidc_provider/authorize.html:10
+#, python-format
+msgid ""
+"La aplicación %(client.name)s necesita acceder a esta información de tu "
+"cuenta"
+msgstr ""
+
+#: baid/templates/terms.html:4
+msgid ""
+"Términos de uso para los sitios del Gobierno de la Ciudad de Buenos Aires"
+msgstr ""
+
+#: bienes/choices.py:6
+msgid "AUTOMOVIL"
+msgstr ""
+
+#: bienes/choices.py:7
+msgid "PICK UP"
+msgstr ""
+
+#: bienes/forms.py:22 bienes/models.py:20
+#: bienes/templates/bienes/vehiculos.html:43
+#: bienes/templates/bienes/vehiculos.html:44
+#: bienes/templates/bienes/vehiculos.html:76
+msgid "Patente"
+msgstr ""
+
+#: bienes/models.py:19
+msgid "User"
+msgstr ""
+
+#: bienes/templates/bienes/vehiculos.html:6
+msgid "Vehículos"
+msgstr ""
+
+#: bienes/templates/bienes/vehiculos.html:33
+#: bienes/templates/bienes/vehiculos.html:68
+msgid "Tipo de vehículo"
+msgstr ""
+
+#: bienes/templates/bienes/vehiculos.html:34
+#: bienes/templates/bienes/vehiculos.html:68
+msgid "Vehículo"
+msgstr ""
+
+#: bienes/templates/bienes/vehiculos.html:86
+msgid "Nuevo vehículo"
+msgstr ""
+
+#: dashboard/models.py:8
+msgid "Manejar las aplicaciones clientes de OpenID"
+msgstr ""
+
+#: dashboard/templates/dashboard/access_denied.html:11
+msgid "Acceso Denegado."
+msgstr ""
+
+#: dashboard/templates/dashboard/access_denied.html:12
+msgid "Usted no tiene permisos para acceder aquí."
+msgstr ""
+
+#: dashboard/templates/dashboard/base.html:50
+msgid "Cambiar navegación"
+msgstr ""
+
+#: dashboard/templates/dashboard/base.html:59
+#: dashboard/templates/dashboard/client_list.html:24
+msgid "Clientes"
+msgstr ""
+
+#: dashboard/templates/dashboard/client_create.html:11
+msgid "Crear cliente"
+msgstr ""
+
+#: dashboard/templates/dashboard/client_create.html:15
+msgid "Algo salió mal."
+msgstr ""
+
+#: dashboard/templates/dashboard/client_create.html:15
+msgid "Intente nuevamente."
+msgstr ""
+
+#: dashboard/templates/dashboard/client_create.html:20
+msgid "Nombre"
+msgstr ""
+
+#: dashboard/templates/dashboard/client_create.html:36
+#: dashboard/templates/dashboard/client_detail.html:33
+msgid "Ir Atras"
+msgstr ""
+
+#: dashboard/templates/dashboard/client_detail.html:30
+msgid "Eliminar"
+msgstr ""
+
+#: dashboard/templates/dashboard/client_detail.html:31
+msgid "Editar"
+msgstr ""
+
+#: dashboard/templates/dashboard/client_list.html:17
+msgid "Crear Cliente"
+msgstr ""
+
+#: dashboard/templates/dashboard/client_list.html:31
+msgid "No se encontraron clientes."
+msgstr ""
+
+#: dashboard/templates/dashboard/home.html:11
+msgid "Bienvenido al Dashboard"
+msgstr ""
+
+#: dashboard/templates/dashboard/home.html:12
+msgid "Nada por aquí."
+msgstr ""

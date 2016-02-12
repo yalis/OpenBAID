@@ -1,0 +1,16 @@
+﻿{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-12 text-center">
+		<div class="icon icon-user"{% if request.user.profile.avatar %}style="background-image: url('{{ request.user.profile.avatar }}');border-radius:500px"{% endif %}></div>
+		  <h1>{{ name }}</h1>
+			<p>{% trans 'Entraste a tu cuenta' %}</p>
+			<br><br>
+			<a href="#" class="btn btn-link btn-block" target="_blank">{% trans 'Términos de uso y privacidad' %}</a>
+		</div>
+	</div>
+</div>
+{% endblock %}

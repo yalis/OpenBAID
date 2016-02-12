@@ -1,0 +1,21 @@
+﻿{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+        <div class="text-center">
+          <div class="icon icon-danger"></div>
+          <h1 class="h2">{% trans '¿Estás seguro que querés borrar tu cuenta?' %}</h1>
+          <p>{% trans 'Borrando tu cuenta vas a perder la posibilidad de hacer tus trámites de manera online y acceder a todos los beneficios y notificaciones de servicios.' %}</p>
+          <br><br>
+
+            <form action="{% url 'accounts:delete-account' %}" method="POST">
+  	  <button class="btn btn-danger btn-xl btn-block" value="1" name="borrar"/>{% trans 'Borrar cuenta' %}</button>
+
+	  {% csrf_token %}
+  	  </form>
+          <br>
+          <br>
+          <a href="{% url 'accounts:data' %}" class="btn btn-link btn-block">{% trans 'Volver' %}</a>
+          <a href="#" class="btn btn-link btn-block" target="_blank">{% trans 'Términos de uso y privacidad' %}</a>
+        </div>
+{% endblock %}

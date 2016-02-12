@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+<div class="text-center">
+    {% if error %}
+        <h1>Ups!</h1>
+        <p>{% trans 'Ocurrio un error. Intenta activar tu cuenta nuevamente.' %}</p>
+        <a href="{% url 'accounts:email_send' %}" class="btn btn-default">{% trans 'Activar Cuenta' %}</a>
+    {% else %}
+        <h1>{% trans 'Tu cuenta fue verificada!' %}</h1>
+        <a href="{{ login_url }}" class="btn btn-lg btn-default btn-block">{% trans 'Continuar' %}</a>
+    {% endif %}
+</div>
+
+{% endblock %}

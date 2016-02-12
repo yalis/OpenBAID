@@ -1,0 +1,13 @@
+p.number {
+	font-size: 4em;
+}
+
+p.text {
+	font-size: 2em;
+}
+
+.overflowHeight {
+    overflow-y: auto;
+    height: 500px;
+    margin-bottom: 60px;
+}

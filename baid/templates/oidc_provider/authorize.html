@@ -1,0 +1,33 @@
+{% extends "base_without_nav.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="text-center">
+      <h1 class="h3">{% blocktrans with clien=client.name %}La aplicación {{ client.name }} necesita acceder a esta información de tu cuenta{% endblocktrans %}</h1>
+      <br>
+    </div>
+    <div class="alert alert-default">
+		<br>
+		<ul>
+		{% for scope in params.scope %}
+			<li>{{ scope | capfirst }}</li>
+		{% endfor %}
+		</ul>
+		<br>
+    </div>
+    <br>
+    <form method="post" action="{% url 'oidc_provider:authorize' %}">
+		{% csrf_token %}
+		{{ hidden_inputs }}
+		<input name="allow" type="submit" class="btn btn-primary btn-xl btn-block" value="{% trans 'Continuar' %}" />
+		<br>
+        <input type="submit" class="btn btn-link btn-block" value="Cancelar">
+	</form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block javascript %}
+{{block.super}}
+{% endblock %}
+
+{% block stylesheets %}
+{{block.super}}
+<link rel="stylesheet" href="{{STATIC_URL}}fonts/signos/style.css" />
+<link rel="stylesheet" href="{{STATIC_URL}}css/registration.css" />
+{% endblock %}

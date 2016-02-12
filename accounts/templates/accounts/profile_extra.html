@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/chosen.min.css">
+{% endblock %}
+
+{% block content %}
+<h1 class="h3 text-center">{% trans 'Datos Opcionales' %}</h1>
+        <br>
+        {% if error_exist %}<div class="alert alert-danger" role="alert"><b>{% trans 'Por favor completa los campos requeridos antes de continuar' %}</b></div>{% endif %}
+        <form method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ next }}" />
+          <div class="form-group has-button {% if error.nacionalidad %}has-error{% endif %}">
+            <label class="control-label" for="nacionalidad">{% trans 'Nacionalidad' %}</label>
+            <select class="form-control chosen-select" data-placeholder="{% trans 'Elegí nacionalidad' %}" id="nacionalidad" name="nacionalidad">
+              <option selected></option>
+              {% for nac in nacionalidades %}
+                <option value="{{ nac.codigo }}">{{ nac.nombre | capfirst }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="form-group has-button {% if error.provincia %}has-error{% endif %}">
+            <label class="control-label" for="provincia">{% trans 'Provincia' %}</label>
+            <select class="form-control chosen-select" data-placeholder="{% trans 'Elegí provincia' %}" id="provincia" name="provincia">
+              <option selected></option>
+              {% for prov in provincias %}
+                <option value="{{ prov.id }}">{{ prov.nombre | capfirst }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-7">
+              <div class="form-group {% if error.domicilio %}has-error{% endif %}">
+                <label class="control-label" for="domicilio">{% trans 'Domicilio' %}</label>
+                <input class="form-control" type="text" placeholder="{% trans 'Calle y altura' %}" id="domicilio" name="domicilio" value="{{ data.domicilio }}">
+              </div>
+            </div>
+            <div class="col-xs-5">
+              <div class="form-group {% if error.departamento %}has-error{% endif %}">
+                <label class="control-label" for="departamento">{% trans 'Departamento' %}</label>
+                <input class="form-control" type="text" placeholder="{% trans 'Piso y depto.' %}" id="departamento" name="departamento" value="{{ data.departamento }}">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-7">
+              <div class="form-group {% if error.localidad %}has-error{% endif %}">
+                <label class="control-label" for="localidad">{% trans 'Barrio o Localidad' %}</label>
+                <select class="form-control chosen-select" data-placeholder="{% trans 'Buscá tu barrio o localidad' %}" id="localidad" name="localidad">
+                </select>
+              </div>
+            </div>
+            <div class="col-xs-5">
+              <div class="form-group {% if error.postal_code %}has-error{% endif %}">
+                <label class="control-label" for="postal_code">{% trans 'Código postal' %}</label>
+                <input class="form-control" type="number" placeholder="{% trans 'Código postal' %}" id="postal_code" name="postal_code" value="{{ data.postal_code }}">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group {% if error.comuna %}has-error{% endif %}">
+            <label class="control-label" for="comuna">{% trans 'Comuna' %}</label>
+            <input class="form-control" type="number" placeholder="{% trans 'Ej: 6' %}" id="comuna" name="comuna" value="{{ data.comuna }}">
+          </div>
+
+          <div class="form-group {% if error.phone_number %}has-error{% endif %}">
+            <label class="control-label" for="phone_number">{% trans 'Teléfono Móvil' %}</label>
+            <input class="form-control" type="number" placeholder="{% trans 'Ej: 1133335555' %}" id="phone_number" name="phone_number" value="{{ data.phone_number }}">
+          </div>
+            
+          <div class="form-group {% if error.cuil %}has-error{% endif %}">
+            <label class="control-label" for="cuil">{% trans 'CUIT o CUIL' %}</label>
+            <input class="form-control" type="text" placeholder="{% trans 'Ej: 20-11444444-7' %}" id="cuil" name="cuil" value="{{ data.cuil }}">
+          </div>
+            
+          <div class="form-group {% if error.email_alternativo %}has-error{% endif %}">
+            <label class="control-label" for="email_alternativo">{% trans 'Correo electrónico alternativo' %}</label>
+            <input class="form-control" type="email" placeholder="{% trans 'Correo electrónico alternativo' %}" id="email_alternativo" name="email_alternativo" value="{{ data.email_alternativo }}">
+          </div>
+
+          <br>
+          <input type="submit" class="btn btn-primary btn-xl btn-block" value="{% trans 'Guardar' %}">
+        </form>
+        <br>
+        <p class="text-center">
+          <a href="#" class="btn btn-link btn-block" target="_blank">{% trans 'Términos de uso y privacidad' %}</a>
+        </p>
+      </div>
+
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ STATIC_URL }}js/chosen.jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      $(".chosen-select").chosen();
+    });
+
+    $('#nacionalidad').val("{{ data.nacionalidad }}");
+    $('#provincia').val("{{ data.provincia }}");
+
+    if ($('#provincia').val()) {
+        load_localidades($('#provincia').val());
+    }
+
+    $('#provincia').on('change', function() {
+      load_localidades(this.value);
+    });
+
+    function load_localidades(provincia_id) {
+      var $localidad = $('#localidad');
+      // First we clean all options
+      $localidad.empty().append('<option selected></option>');
+      // Make the ajax call to the server
+      $.post( "{% url 'accounts:get-localidades' %}", { provincia_id: provincia_id })
+      .done(function( data ) {
+        var aux, localidad, _i, _len;
+        for (_i = 0, _len = data.length; _i < _len; _i++) {
+          localidad = data[_i];
+          $localidad.append('<option value="'+localidad[0]+'">'+localidad[1]+'</option>');
+        }
+        $('#localidad').val("{{ data.localidad }}");
+        $(".chosen-select").trigger("chosen:updated");
+      });
+    }
+  </script>
+{% endblock %}

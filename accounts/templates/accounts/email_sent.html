@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+<div class="text-center">
+    <div class="icon icon-email"></div>
+    <h1 class="h2">{% trans 'Revisá tu casilla de email' %}</h1>
+    <p>{% trans 'Te hemos enviado un link de activación a' %} <i>{{ email }}</i>.</p>
+</div>
+    
+{% endblock %}

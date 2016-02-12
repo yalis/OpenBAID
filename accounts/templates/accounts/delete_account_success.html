@@ -1,0 +1,12 @@
+﻿{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="text-center">
+	<h1 class="h2">{% trans 'Tu cuenta fue borrada' %}</h1>
+	<br><br>
+	<a href="{% url 'home' %}" class="btn btn-default btn-lg btn-block">{% trans 'Volver al inicio' %}</a>
+	<br><br>
+	<a href="#" class="btn btn-link btn-block" target="_blank">{% trans 'Términos de uso y privacidad' %}</a>
+</div>
+{% endblock %}

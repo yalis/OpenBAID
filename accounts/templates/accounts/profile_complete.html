@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load staticfiles %}
+
+{% block stylesheets %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-datetimepicker.css' %}">
+
+{% endblock %}
+
+{% block content %}
+    {% if not has_profile %}
+    <h1 class="h3 text-center">{% trans 'Por favor completá estos datos para finalizar el registro' %}</h1>
+    {% else %}
+    <h1 class="h3 text-center">{% trans 'Datos personales' %}</h1>
+    {% endif %}
+    <br>
+    <form method="POST" action="{% url 'accounts:profile-complete' %}">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}" />
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="form-group {% if error.first_name %}has-error{% endif %}">
+            <label class="control-label" for="nombres">{% trans 'Nombres' %}</label>
+            <input class="form-control" type="text" placeholder="Ej: Juan Alberto" name="first_name" value="{{ data.first_name }}">
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="form-group {% if error.last_name %}has-error{% endif %}">
+            <label class="control-label" for="apellidos">{% trans 'Apellidos' %}</label>
+            <input class="form-control" type="text" placeholder="Ej: Perez" name="last_name" value="{{ data.last_name }}">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="form-group {% if error.tipo_documento %}has-error{% endif %}">
+            <label class="control-label">{% trans 'Documento' %}</label>
+            <select class="form-control" name="tipo_documento">
+              <option value="{{ data.tipo_documento }}" selected>{{ data.tipo_documento | upper }}</option>
+              {% for tipo in tipos_documentos %}
+              <option value="{{ tipo }}">{{ tipo | upper }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="form-group {% if error.numero_documento %}has-error{% endif %}">
+            <label class="control-label">{% trans 'Número' %}</label>
+            <input class="form-control" type="text" placeholder="Ej: 31765123" name="numero_documento" value="{{ data.numero_documento }}">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group {% if error.gender %}has-error{% endif %}">
+        <label class="control-label">{% trans 'Genero' %}</label>
+        <div class="btn-group btn-group-justified" data-toggle="buttons">
+          <label href="#" class="btn btn-default {% ifequal data.gender 'F' %}active{% endifequal %}">
+            <input type="radio" name="gender" value="F" class="hidden" {% ifequal data.gender 'F' %}active{% endifequal %}> {% trans 'Femenino' %}
+          </label>
+          <label href="#" class="btn btn-default {% ifequal data.gender 'M' %}active{% endifequal %}">
+            <input type="radio" name="gender" value="M" class="hidden" {% ifequal data.gender 'M' %}checked{% endifequal %}> {% trans 'Masculino' %}
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group form-date {% if error.birthdate %}has-error{% endif %}" style="position:relative">
+        <label class="control-label" for="birthdate">{% trans 'Fecha de nacimiento' %}</label>
+        <input class="form-control" type="text" placeholder="{% trans 'Ej: 07/07/1985' %}" id="birthdate" name="birthdate" value="{{ data.birthdate }}">
+      </div>
+
+      <br>
+      <input type="submit" class="btn btn-primary btn-xl btn-block" value="{% trans 'Continuar' %}">
+      <br>
+      <a href="#" class="btn btn-link btn-block" target="_blank">{% trans 'Términos de uso y privacidad' %}</a>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+
+  <script src="{% static 'js/moment.js' %}"></script>
+  <script src="{% static 'js/bootstrap-datetimepicker.js' %}"></script>
+  <script type="text/javascript">
+    $(function () {
+      $('#birthdate').datetimepicker({
+        locale: 'es',
+        format: 'DD/MM/YYYY'
+      });
+      if ("{{ data.tipo_documento }}" === "") {
+        $( "select[name=tipo_documento] option[value=dni]" ).prop('selected', true);
+      };
+    });
+  </script>
+
+{% endblock %}

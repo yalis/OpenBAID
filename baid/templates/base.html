@@ -1,0 +1,46 @@
+{% extends "base_without_nav.html" %}
+
+{% load i18n %}
+{% load staticfiles %}
+
+{% block navigation %}
+
+    {% if user.is_authenticated and not hide_nav %}
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li class="dropdown user-name hidden-xs">
+            <a href="#user-menu" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ user.email }} <span class="caret"></span></a>
+            <ul class="dropdown-menu dropdown-menu-left" role="menu">
+              <li class="dropdown-header">{% trans 'Mis datos' %}</li>
+              <li><a href="{% url 'accounts:profile-complete' %}">{% trans 'Personales' %}</a></li>
+              <li><a href="{% url 'accounts:profile-extra' %}">{% trans 'Opcionales' %}</a></li>
+              <li><a href="{% url 'accounts:data' %}">{% trans 'Cuenta' %}</a></li>
+              {% if user.is_superuser %}
+              <li role="separator" class="divider"></li>
+              <li><a href="{% url 'admin:index' %}" target="_blank">{% trans 'Admin' %}</a></li>
+              {% endif %}
+            </ul>
+          </li>
+          <li class="visible-xs"><a href="#mobileMenu" data-toggle="collapse" aria-expanded="false" aria-controls="mobileMenu">{{ user.email }} <span class="caret"></span></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{% url 'accounts:logout' %}">{% trans 'Salir' %}</a></li>
+        </ul>
+        <div class="clearfix"></div>
+        <div class="visible-xs">
+          <div class="collapse" id="mobileMenu">
+            <ul class="nav navbar-nav" role="menu">
+            <li><a href="{% url 'accounts:profile-extra' %}">{% trans 'Datos para trámites' %}</a></li>
+              <li><a href="{% url 'accounts:profile-complete' %}">{% trans 'Datos personales' %}</a></li>
+              <li><a href="{% url 'accounts:data' %}">{% trans 'Datos de cuenta' %}</a></li>
+              {% if user.is_superuser %}
+              <li><a href="{% url 'admin:index' %}" target="_blank">{% trans 'Admin' %}</a></li>
+              {% endif %}
+            </ul>
+        </div>
+      </div>
+    </nav>
+    {% endif %}
+
+{% endblock %}

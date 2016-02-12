@@ -1,0 +1,32 @@
+{% load i18n %}
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<body style="background-color: #F3F0ED;">
+<table width="700" align="center" cellpadding="0" cellspacing="0" style="border: 4px solid #fff;">
+    <tr>
+        <td bgcolor="#FFD300"><img src="{{site}}/static/img/logo.gif" alt="Open BA ID" width="700" height="65"></td>
+    </tr>
+    <tr>
+        <td bgcolor="#ffffff">
+            <table cellpadding="12">
+                <tr>
+                    <td style="font-size: 14px; font-family: Arial, Helvetica, sans-serif;">
+                        <div style="background: rgba(247, 240, 240, 0.75); padding: 10px 15px 5px 20px;">
+                            <p style="font-size:22px; font-weight: bold; text-align: center;"><a style="text-decoration:none; background-color: #D32525; padding: 10px; color: #fff; border-radius: 5px;" href="{{site}}{{path}}">{% trans 'Borrar mi cuenta de Open BA ID' %}</a></p>
+                            <p>&nbsp;</p>
+                            <p>{% trans 'Te enviamos este correo para confirmar si querés eliminar tu cuenta. Tené en cuenta que al eliminar tu cuenta los datos que hayas guardado se eliminarán.' %}</p>
+                            <p>{% trans 'Para confirmarlo por favor hacé clic en el enlace de arriba o ingresá a' %} <a href="{{site}}{{path}}">{{site}}{{path}}</a></p>
+                            <p style="text-align:center; font-size:18px;">{% trans '¡Gracias!' %}</p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
