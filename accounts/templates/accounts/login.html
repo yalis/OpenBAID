@@ -43,6 +43,7 @@
     <div class="btn-group btn-group-justified">
       <a href="{% url 'social:begin' 'facebook' %}?next={{ next | urlencode }}" class="btn btn-default btn-lg"><span class="social-icon social-fb"></span> &nbsp; Facebook</a>
       <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ next | urlencode  }}" class="btn btn-default btn-lg"><span class="social-icon social-gp"></span> &nbsp; Google</a>
+      <a href="{% url 'social:begin' 'poc' %}?next={{ next | urlencode  }}" class="btn btn-default btn-lg"><span class="social-icon social-gh"></span> &nbsp; PoC</a>
     </div>
     <br>
     <hr>

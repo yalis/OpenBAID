@@ -5,6 +5,7 @@ import logging
 from datetime import date
 from uuid import uuid4
 from urllib import quote
+from urlparse import urlparse
 
 from django.conf import settings
 from django.contrib.auth import authenticate
@@ -36,6 +37,8 @@ from accounts.forms import *
 from accounts.models import *
 from accounts.utils import *
 
+from social.backends.open_id import OpenIdConnectAuth
+from social.exceptions import AuthMissingParameter
 
 logger = logging.getLogger(__name__)
 
@@ -77,8 +80,8 @@ def login(request):
                             activate_url += redirect_path
                         send_email_verification(email, activate_url)
                         return render(request, 'accounts/email_sent.html', {
-                                'email': user.email,
-                            })
+                            'email': user.email,
+                        })
                     # Log the user in.
                     auth_login(request, auth_user)
                     return redirect(redirect_to or reverse('accounts:profile'))
@@ -125,13 +128,14 @@ class RedirectFormMixin(FormView):
     Mixin View agrega funcionalidad de redirect("next") a los Formviews que requieran.
     * Heredar primero
     """
+
     @property  # workaround
     def redirect_to(self):
         """
         Indica la URL a la que necesita redireccionarse en caso de venir desde un cliente o cualquier pagina
         :return:
         """
-        #todo DRY, intecionalmente repetido para no quebrar, se armo un quilombete con un revert donde se quito codigo
+        # todo DRY, intecionalmente repetido para no quebrar, se armo un quilombete con un revert donde se quito codigo
         redirect_to = self.request.POST.get(REDIRECT_FIELD_NAME, self.request.GET.get(REDIRECT_FIELD_NAME, ''))
 
         return redirect_to
@@ -414,6 +418,44 @@ class PasswordResetFormView(RedirectFormMixin):
         return HttpResponseRedirect(login_url)
 
 
+# yalis OpenID Connect integration.
+class PocOpenId(OpenIdConnectAuth):
+    name = 'poc'
+
+    expire = 6000
+    #redirect_uri = 'http://192.168.33.10:9000/complete/rerepoc'
+    REDIRECT_STATE = False
+    STATE_PARAMETER = True
+
+    URL_ROOT = 'http://django-oidc-provider.dev:8000/openid'
+    AUTHORIZATION_URL = '{0}/authorize/'.format(URL_ROOT)
+    ACCESS_TOKEN_URL = '{0}/token/'.format(URL_ROOT)
+    ACCESS_TOKEN_METHOD = 'POST'
+    ID_TOKEN_ISSUER = 'http://localhost:8000/openid'
+
+    def get_user_details(self, response):
+        logger.debug(' ####### response in get_user_details : ' + str(response))
+
+        # TODO: implementar user_data() para traer la info del usuario desde /openid/userinfo
+        values = {'username': 'tester', 'email': 'tester@testing.com', 'fullname': 'Tester Loco', 'first_name': 'Tester', 'last_name': 'Loco'}
+
+        #"""Generate username from identity url"""
+        #values = super(PocOpenId, self).get_user_details(response)
+        # values['username'] = 'tester' # values.get('username') or urlparse.urlsplit(response.identity_url).netloc.split('.', 1)[0]
+        return values
+
+    def get_user_id(self, details, response):
+        return self.id_token['sub']
+
+#    def openid_url(self):
+#        """Returns Poc authentication URL"""
+# if not self.data.get('openid_poc_user'):
+#    raise AuthMissingParameter(self, 'openid_poc_user')
+
+
+#        return 'http://192.168.33.10:8000/openid'  # % self.data['openid_poc_user']
+
+
 @login_required
 @profile_required
 def profile(request):
@@ -472,7 +514,6 @@ def profile_complete(request):
 
         # Check if there's no error.
         if all([not e for e in error.itervalues()]):
-
             ep.nombre = data['first_name']
             ep.apellido = data['last_name']
             birthdate = tuple([int(n) for n in data['birthdate'].split('/')])
@@ -516,23 +557,23 @@ def profile_extra(request):
 
     data = {
         'nacionalidad': request.POST.get('nacionalidad',
-            ep.nacionalidad.codigo if ep.nacionalidad else ''),
+                                         ep.nacionalidad.codigo if ep.nacionalidad else ''),
         'provincia': request.POST.get('provincia',
-            ep.provincia.id if ep.provincia else ''),
+                                      ep.provincia.id if ep.provincia else ''),
         'localidad': request.POST.get('localidad',
-            ep.localidad.id if ep.localidad else ''),
+                                      ep.localidad.id if ep.localidad else ''),
         'departamento': request.POST.get('departamento', ep.departamento or ''),
         'domicilio': request.POST.get('domicilio',
-            ep.direccion or ''),
+                                      ep.direccion or ''),
         'postal_code': request.POST.get('postal_code',
-            ep.codigo_postal or ''),
+                                        ep.codigo_postal or ''),
         'comuna': request.POST.get('comuna', ep.comuna or ''),
         'phone_number': request.POST.get('phone_number', ep.numero_telefono or ''),
         'cuil': request.POST.get('cuil', ep.cuit_cuil or ''),
         'email_alternativo': request.POST.get('email_alternativo', ep.email_alternativo or ''),
     }
 
-    error = { k: False for k in data.iterkeys() }
+    error = {k: False for k in data.iterkeys()}
     not_error = True
 
     if request.method == 'POST':
@@ -540,18 +581,18 @@ def profile_extra(request):
         required = request.GET.get('required', '').split(',')
 
         if data['nacionalidad'] or ('nacionalidad' in required):
-            error['nacionalidad'] = not (data['nacionalidad'] in [ n.codigo for n in nacionalidades])
+            error['nacionalidad'] = not (data['nacionalidad'] in [n.codigo for n in nacionalidades])
             if not error['nacionalidad']:
-                ep.nacionalidad = [ n for n in nacionalidades \
-                    if (n.codigo == data['nacionalidad']) ][0]
+                ep.nacionalidad = [n for n in nacionalidades \
+                                   if (n.codigo == data['nacionalidad'])][0]
         else:
             ep.nacionalidad = None
 
         if data['provincia'] or ('provincia' in required):
-            error['provincia'] = not (data['provincia'] in [ str(n.id) for n in provincias ])
+            error['provincia'] = not (data['provincia'] in [str(n.id) for n in provincias])
             if not error['provincia']:
-                ep.provincia = [ p for p in provincias \
-                    if (str(p.id) == data['provincia']) ][0]
+                ep.provincia = [p for p in provincias \
+                                if (str(p.id) == data['provincia'])][0]
         else:
             ep.provincia = None
 
@@ -560,10 +601,10 @@ def profile_extra(request):
                 localidades = Localidad.objects.filter(provincia=data['provincia'])
             else:
                 localidades = []
-            error['localidad'] = not (data['localidad'] in [ str(l.id) for l in localidades ])
+            error['localidad'] = not (data['localidad'] in [str(l.id) for l in localidades])
             if not error['localidad']:
-                ep.localidad = [ l for l in localidades \
-                    if (str(l.id) == data['localidad']) ][0]
+                ep.localidad = [l for l in localidades \
+                                if (str(l.id) == data['localidad'])][0]
         else:
             ep.localidad = None
 
@@ -647,7 +688,7 @@ def get_localidades(request):
 
     try:
         result = Localidad.objects.filter(provincia=provincia_id)
-        result = [ [ e.id, e.nombre] for e in result ]
+        result = [[e.id, e.nombre] for e in result]
     except:
         result = None
 
